@@ -16,12 +16,16 @@ class BeersController < ApplicationController
   end
 
   def show
-    @beer = Beer.find_by(name: params[:beer][:name])
+    @beer = Beer.find_by_id(params[:id])
   end
-  
+
+  #def index
+   # @beers = Beer.all
+  #end
+
   private
 
   def beer_params
-    params.require(beer).permit(:name, :style, :ABV, :brewery_id, brewery_attributes: [:name])
+    params.require(:beer).permit(:name, :style, :ABV, :brewery_id, brewery_attributes: [:name])
   end
 end
