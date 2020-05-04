@@ -4,7 +4,7 @@ class User < ApplicationRecord
 
   has_many :beers #that they have created
   
-  validates :username, presence: true, uniquness:true
-  
+  validates :username, presence: true, uniqueness: true
+
   has_secure_password #gives us authenticate method
 end
