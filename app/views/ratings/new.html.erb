@@ -1,0 +1,20 @@
+<h1>Rate <%= @rating.beer.brewery.name%> <%= @rating.beer.name %></h1>
+
+<%= form_for (@rating) do |f| %>
+  <div>
+    <%= f.label :stars %>
+    <%= f.number_field :stars, min:0, max:5 %>
+  </div>
+  <br>
+  <div>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+  <br>
+  <div>
+    <%= f.label :content %>
+    <%= f.text_area :content, size: "25x5" %>
+  </div>
+    <%= f.hidden_field :beer_id %>
+    <%= f.submit %>
+<%end%>

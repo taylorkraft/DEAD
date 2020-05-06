@@ -2,7 +2,7 @@ class BeersController < ApplicationController
 
   def new
     @beer = Beer.new
-    @beer.build_brewery
+    @beer.build_brewery #associates a beer with brewery upon instantiation
   end
 
   def create
@@ -15,13 +15,14 @@ class BeersController < ApplicationController
     end
   end
 
+  def index
+    @beers = Beer.all
+  end
+  
   def show
     @beer = Beer.find_by_id(params[:id])
   end
 
-  #def index
-   # @beers = Beer.all
-  #end
 
   private
 
