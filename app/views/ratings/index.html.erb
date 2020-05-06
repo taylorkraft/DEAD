@@ -1,1 +1,7 @@
-<h1>Ratings Index</h1>
+<h1>All Ratings</h1>
+
+<ul>
+<% @ratings.each do |r| %>
+  <li><%= r.beer.name %>: <%= r.title%> - <%= r.stars %>
+<%end%>
+</ul>
