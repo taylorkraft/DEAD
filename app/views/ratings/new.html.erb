@@ -1,4 +1,8 @@
-<h1>Rate <%= @rating.beer.brewery.name%> <%= @rating.beer.name %></h1>
+<% if params[:beer_id] %>
+  <h1>Rate <%= @rating.beer.brewery.name%> <%= @rating.beer.name %></h1>
+<% else %>
+  <h1>Rate A Beer</h1>
+<% end %>
 
 <%= form_for (@rating) do |f| %>
   <div>
@@ -17,4 +21,4 @@
   </div>
     <%= f.hidden_field :beer_id %>
     <%= f.submit %>
-<%end%>
+<% end %>
