@@ -1,7 +1,11 @@
-<h1>All Ratings</h1>
+<% if @beer %>
+  <h1>Ratings for <%= @beer.brewery_name%> - <%= @beer.name %></h1>
+<% else %>
+  <h1>All Ratings</h1>
+<% end %>
 
 <ul>
 <% @ratings.each do |r| %>
-  <li><%= r.beer.name %>: <%= r.title%> - <%= r.stars %>
+  <li><%= r.beer.name %>: <%= link_to r.title, rating_path(r)%> - <%= r.stars %>
 <% end %>
 </ul>
