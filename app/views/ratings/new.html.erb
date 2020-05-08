@@ -1,12 +1,17 @@
-<% if params[:beer_id] %>
-  <h1>Rate <%= @rating.beer.brewery.name %> <%= @rating.beer.name %></h1>
-<% else %>
-  <h1>Rate A Beer</h1>
-<% end %>
+<h1>Rate <%= @rating.beer.brewery.name %> <%= @rating.beer.name %></h1>
+
 
 <%= render partial: 'layouts/errors', locals: {object: @rating} %>
 
 <%= form_for (@rating) do |f| %>
+  <% if params[:beer_id] %>
+    <%= f.hidden_field :beer_id %>
+  <% else %>
+    <div>
+      <%= f.label :beer_id, "Select a Beer" %>
+      <%= f.collection_select :beer_id, Beer.alpha, :id, :beer_and_brewery, include_blank: true %>
+    </div>
+  <% end %>
   <div>
     <%= f.label :stars %>
     <%= f.number_field :stars, min:0, max:5 %>

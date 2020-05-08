@@ -8,7 +8,7 @@ class BeersController < ApplicationController
   def create
     @beer = Beer.new(beer_params)
     @beer.user_id = session[:user_id]
-    if @beer.save
+    if @beer.save #validations happen here
       redirect_to beer_path(@beer)
     else
       render :new
