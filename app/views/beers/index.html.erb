@@ -2,8 +2,8 @@
 
 <% @beers.each do |beer| %>
   <h2><%= beer.brewery.name %> - <%= beer.name %></h2>
-  <%= link_to "Rate Beer", new_beer_rating_path(beer.id)%>
+    <%= link_to "Rate Beer", new_beer_rating_path(beer.id)%>
   <div>
     <p><%= beer.style %> - <%= beer.ABV %></p>
   </div>
-<%end%>
+<% end %>

@@ -1,8 +1,10 @@
 <% if params[:beer_id] %>
-  <h1>Rate <%= @rating.beer.brewery.name%> <%= @rating.beer.name %></h1>
+  <h1>Rate <%= @rating.beer.brewery.name %> <%= @rating.beer.name %></h1>
 <% else %>
   <h1>Rate A Beer</h1>
 <% end %>
+
+<%= render partial: 'layouts/errors', locals: {object: @rating} %>
 
 <%= form_for (@rating) do |f| %>
   <div>

@@ -5,4 +5,5 @@ class Beer < ApplicationRecord
   has_many :users, through: :ratings #people who have rated beers
   accepts_nested_attributes_for :brewery
 
+  validates :name, presence: true
 end
