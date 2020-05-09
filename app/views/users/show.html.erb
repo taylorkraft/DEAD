@@ -1,1 +1,8 @@
-Welcome <%= @user.username %>
+<h1>Welcome to <%= @user.username%>'s homepage!</h1>
+
+<h3>You've rated these beers:</h3>
+<ul>
+  <% @user.rated_beers.each do |b| %>
+  <li><%= link_to b.beer_and_brewery, beer_path(b)%>
+  <% end %>
+</ul>

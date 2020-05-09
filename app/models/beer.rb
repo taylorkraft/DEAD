@@ -10,11 +10,21 @@ class Beer < ApplicationRecord
 
   validates :name, uniqueness: {scope: :brewery, message: "has already been added"}
 
+  # def not_a_duplicate
+  #   if Beer.find_by(name: name, brewery_id: brewery_id)
+  #     errors.add(:name, 'has already been added by that brewery')
+  #   end
+  # end
+
   def self.alpha
     order(:name)
   end
 
   def brewery_attributes=(attributes)
     brewery = Brewery.find_or_create_by(attributes) if !attributes['name'].empty?
+  end
+
+  def beer_and_brewery
+    "#{brewery.name} - #{name}"
   end
 end
