@@ -12,7 +12,7 @@
   <% else %>
     <div>
       <%= f.label :beer_id, "Select A Beer" %>
-      <%= f.collection_select :beer_id, Beer.all, :id, :beer_and_brewery, include_blank: true %>
+      <%= f.collection_select :beer_id, Beer.alpha, :id, :beer_and_brewery, include_blank: true %>
     </div>
   <% end %>
   <div>

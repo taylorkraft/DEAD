@@ -8,6 +8,7 @@ class Beer < ApplicationRecord
   validates :name, presence: true
   validate :not_a_duplicate
 
+  scope :order_by_rating, -> {left_joins(:ratings).group(:id).order('avg(stars) desc')}
   
   def not_a_duplicate
     if Beer.find_by(name: name, brewery_id: brewery_id)

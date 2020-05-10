@@ -11,16 +11,23 @@ class BeersController < ApplicationController
     if @beer.save
       redirect_to beer_path(@beer)
     else
+      @beer.build_brewery
       render :new
     end
   end
 
   def index
-    @beers = Beer.all
+    @beers = Beer.order_by_rating.includes(:brewery) #only queries the database once
   end
   
   def show
     @beer = Beer.find_by_id(params[:id])
+  end
+
+  def edit
+  end
+
+  def update
   end
 
 
