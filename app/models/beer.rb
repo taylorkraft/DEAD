@@ -8,6 +8,7 @@ class Beer < ApplicationRecord
   validates :name, presence: true
   validate :not_a_duplicate
 
+  
   def not_a_duplicate
     if Beer.find_by(name: name, brewery_id: brewery_id)
       errors.add(:style, 'has already been added by that brewery')

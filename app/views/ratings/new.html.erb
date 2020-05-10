@@ -7,6 +7,14 @@
 <%= render partial: 'layouts/errors', locals: {object: @rating} %>
 
 <%= form_for (@rating) do |f| %>
+  <% if params[:beer_id] %>
+    <%= f.hidden_field :beer_id %>
+  <% else %>
+    <div>
+      <%= f.label :beer_id, "Select A Beer" %>
+      <%= f.collection_select :beer_id, Beer.all, :id, :beer_and_brewery, include_blank: true %>
+    </div>
+  <% end %>
   <div>
     <%= f.label :stars %>
     <%= f.number_field :stars, min:0, max:5 %>
