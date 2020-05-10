@@ -22,6 +22,11 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Model has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
+#omniauth gems
+gem 'omniauth'
+gem 'omniauth-google-oauth2'
+gem 'dotenv-rails' #allows you to access env file with 'secret' info
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
