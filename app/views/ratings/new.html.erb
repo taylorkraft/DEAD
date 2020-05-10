@@ -1,8 +1,4 @@
-<% if params[:beer_id] %>
-  <h1>Rate <%= @rating.beer.brewery.name %> <%= @rating.beer.name %></h1>
-<% else %>
-  <h1>Rate A Beer</h1>
-<% end %>
+<%= display_header(@rating) %>
 
 <%= render partial: 'layouts/errors', locals: {object: @rating} %>
 
