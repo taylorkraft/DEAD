@@ -6,15 +6,15 @@ class Beer < ApplicationRecord
   # accepts_nested_attributes_for :brewery
 
   validates :name, presence: true
-  #validate :not_a_duplicate
+  validate :not_a_duplicate
 
-  validates :name, uniqueness: {scope: :brewery, message: "has already been added"}
+  # validates :name, uniqueness: {scope: :brewery, message: "has already been added"}
 
-  # def not_a_duplicate
-  #   if Beer.find_by(name: name, brewery_id: brewery_id)
-  #     errors.add(:name, 'has already been added by that brewery')
-  #   end
-  # end
+  def not_a_duplicate
+    if Beer.find_by(name: name, brewery_id: brewery_id)
+      errors.add(:style, 'has already been added by that brewery')
+    end
+  end
 
   def self.alpha
     order(:name)
