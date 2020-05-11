@@ -5,3 +5,7 @@
 <% if @beer.image.attached? %>
   <%= image_tag url_for(@beer.image) %>
 <% end %>
+
+<%= link_to "Edit #{@beer.name}",  edit_beer_path(@beer) if @beer.user == current_user %>
+<br>
+<%= link_to "See All Reviews", beer_ratings_path(@beer)%>
