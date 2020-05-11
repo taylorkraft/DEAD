@@ -22,7 +22,8 @@ class Beer < ApplicationRecord
   end
 
   def brewery_attributes=(attributes)
-    brewery = Brewery.find_or_create_by(attributes) if !attributes['name'].empty?
+    self.brewery = Brewery.find_or_create_by(attributes) if !attributes['name'].empty?
+    self.brewery
   end
 
   def beer_and_brewery
