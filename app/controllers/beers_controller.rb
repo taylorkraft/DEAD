@@ -9,6 +9,8 @@ class BeersController < ApplicationController
     @beer = Beer.new(beer_params)
     @beer.user_id = session[:user_id]
     if @beer.save
+      @beer.image.purge
+      @beer.image.attach(params[:beer][:image]) #only stores to active storage if there is an image attached
       redirect_to beer_path(@beer)
     else
       @beer.build_brewery

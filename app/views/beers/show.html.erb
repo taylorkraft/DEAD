@@ -1,2 +1,7 @@
-<h1><%= @beer.brewery.name %> <%= @beer.name%></h1>
-<%= image_tag url_for(@beer.image) %>
+<h1><%= @beer.brewery.name %> <%= @beer.name%></h1><br>
+<h3><%= @beer.style %></h3><br>
+<h3>ABV:<%= @beer.ABV %></h3><br>
+
+<% if @beer.image.attached? %>
+  <%= image_tag url_for(@beer.image) %>
+<% end %>
