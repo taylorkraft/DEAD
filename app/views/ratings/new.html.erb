@@ -7,7 +7,7 @@
     <%= f.hidden_field :beer_id %>
   <% else %>
     <div>
-      <%= f.label :beer_id, "Select A Beer" %>
+      <%= f.label "Select A Beer" %>
       <%= f.collection_select :beer_id, Beer.alpha, :id, :beer_and_brewery, include_blank: true %>
     </div>
   <% end %>
@@ -25,6 +25,5 @@
     <%= f.label :content %>
     <%= f.text_area :content, size: "25x5" %>
   </div>
-    <%= f.hidden_field :beer_id %>
     <%= f.submit %>
 <% end %>

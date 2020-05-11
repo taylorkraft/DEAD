@@ -1,11 +1,10 @@
 <h1>Beers By Rating</h1>
-
-<% @beers.each do |beer| %>
   <ol>
+<% @beers.each do |beer| %>
     <li><h3><%= beer.brewery.name %> <%= beer.name %></h3>
   <div>
     <p><%= beer.style %> - <%= beer.ABV %></p>
   </div>
     <%= link_to "Rate Beer", new_beer_rating_path(beer.id)%>
-  </ol>
 <% end %>
+</ol>
