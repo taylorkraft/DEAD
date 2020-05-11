@@ -7,13 +7,17 @@ Rails.application.routes.draw do
   post '/signup' => 'users#create'
   delete '/logout' => 'sessions#destroy'
   
+<<<<<<< HEAD
   get '/auth/:provider/callback' => 'sessions#create'
+=======
+  get '/auth/:provider/callback' => 'sessions#omniauth'
+>>>>>>> updated_master
 
   resources :ratings
   resources :beers do
     resources :ratings, only: [:new, :index]
   end
   resources :breweries
-  resources :users
+  resources :users, only: [:new, :create, :show]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

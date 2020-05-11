@@ -6,7 +6,11 @@ class User < ApplicationRecord
   
   validates :username, presence: true, uniqueness: true
   validates :email, presence: true
+<<<<<<< HEAD
 
+=======
+  
+>>>>>>> updated_master
   has_secure_password #gives us authenticate method, validates password
 
   def self.create_by_google_omniauth(auth)
