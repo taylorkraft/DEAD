@@ -10,14 +10,10 @@ class BeersController < ApplicationController
   def create
     @beer = Beer.new(beer_params)
     @beer.user_id = session[:user_id]
-<<<<<<< HEAD
-    if @beer.save #validations happen here
-=======
 
     if @beer.save #validates
       @beer.image.purge
       @beer.image.attach(params[:beer][:image]) #only stores to active storage if there is an image attached
->>>>>>> updated_master
       redirect_to beer_path(@beer)
     else
       @beer.build_brewery

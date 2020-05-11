@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-<h1><%= @beer.brewery.name %> <%= @beer.name %></h1>
-=======
 <h1><%= @beer.brewery.name %> <%= @beer.name%></h1><br>
 <h3><%= @beer.style %></h3><br>
 <h3>ABV:<%= @beer.ABV %></h3><br>
@@ -9,7 +6,6 @@
   <%= image_tag url_for(@beer.image) %>
 <% end %>
 
-<%= link_to "Edit #{@beer.name}",  edit_beer_path(@beer) if @beer.user == current_user %>
+<%= link_to "Edit #{@beer.name}", edit_beer_path(@beer) if @beer.user == current_user %>
 <br>
 <%= link_to "See All Reviews", beer_ratings_path(@beer) %>
->>>>>>> updated_master

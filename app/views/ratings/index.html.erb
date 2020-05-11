@@ -1,20 +1,12 @@
 <% if @beer %>
-<<<<<<< HEAD
-  <h1>Ratings for <%= @beer.brewery_name%> - <%= @beer.name %></h1>
-=======
-  <h1>Ratings for <%= @beer.brewery_name %> - <%= @beer.name %></h1>
->>>>>>> updated_master
+  <h1>Ratings for <%= @beer.brewery.name %> - <%= @beer.name %></h1>
 <% else %>
   <h1>All Ratings</h1>
 <% end %>
 
 <ul>
 <% @ratings.each do |r| %>
-<<<<<<< HEAD
-  <li><%= r.beer.name %>: <%= link_to r.title, rating_path(r)%> - <%= r.stars %>
-=======
   <li><%= r.beer.name %>: <%= link_to r.title, rating_path(r) %> - <%= r.stars %>
   <br>
->>>>>>> updated_master
 <% end %>
 </ul>

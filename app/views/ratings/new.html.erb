@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-<h1>Create a New Rating</h1>
-=======
 <%= display_header(@rating) %>
->>>>>>> updated_master
 
 <%= render partial: 'layouts/errors', locals: {object: @rating} %>
 
@@ -11,11 +7,7 @@
     <%= f.hidden_field :beer_id %>
   <% else %>
     <div>
-<<<<<<< HEAD
-      <%= f.label :beer_id, "Select a Beer" %>
-=======
       <%= f.label "Select A Beer" %>
->>>>>>> updated_master
       <%= f.collection_select :beer_id, Beer.alpha, :id, :beer_and_brewery, include_blank: true %>
     </div>
   <% end %>
