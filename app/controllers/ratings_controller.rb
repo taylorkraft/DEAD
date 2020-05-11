@@ -1,4 +1,5 @@
 class RatingsController < ApplicationController
+  before_action :redirect_if_not_logged_in
 
   def new
     if @beer = Beer.find_by_id(params[:beer_id]) #if nested
@@ -32,6 +33,6 @@ class RatingsController < ApplicationController
   end
 
   def rating_params
-    params.require(:rating).permit(:stars, :title, :content, :beer_id)
+    params.require(:rating).permit(:beer_id, :stars, :title, :content)
   end
 end
