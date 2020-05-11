@@ -1,2 +1,3 @@
-<h1><%= @rating.title %> - <%= @rating.stars %></h1>
-<p><%= @rating.content%></p>
+<h1><%= link_to "You've rated #{@rating.beer.name}", beer_path(@beer) %></h1>
+<h3>Rating: <%= @rating.title %> - <%= @rating.stars %> stars</h3>
+<p>Description: <%= @rating.content%></p>

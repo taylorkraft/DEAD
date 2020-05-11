@@ -8,4 +8,4 @@
 
 <%= link_to "Edit #{@beer.name}", edit_beer_path(@beer) if @beer.user == current_user %>
 <br>
-<%= link_to "See All Reviews", beer_ratings_path(@beer) %>
+<%= link_to "See Reviews for #{@beer.name}", beer_ratings_path(@beer) %>
