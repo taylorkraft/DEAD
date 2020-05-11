@@ -1,9 +1,4 @@
 class ApplicationController < ActionController::Base
-<<<<<<< HEAD
-  #add helper methods from sinatra project for login
-=======
-
->>>>>>> updated_master
   helper_method :current_user, :logged_in?
 
   private
