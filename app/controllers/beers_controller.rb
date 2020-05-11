@@ -1,4 +1,6 @@
 class BeersController < ApplicationController
+  before_action :set_beer, only:[:show, :edit, :update]
+  before_action :redirect_if_not_logged_in
 
   def new
     @beer = Beer.new
@@ -8,7 +10,8 @@ class BeersController < ApplicationController
   def create
     @beer = Beer.new(beer_params)
     @beer.user_id = session[:user_id]
-    if @beer.save
+
+    if @beer.save #validates
       @beer.image.purge
       @beer.image.attach(params[:beer][:image]) #only stores to active storage if there is an image attached
       redirect_to beer_path(@beer)
@@ -36,6 +39,11 @@ class BeersController < ApplicationController
   private
 
   def beer_params
-    params.require(:beer).permit(:name, :style, :ABV, :brewery_id, :image, brewery_attributes: [:name])
+    params.require(:beer).permit(:name, :style, :ABV, :brewery_id, brewery_attributes: [:name])
+  end
+
+  def set_beer
+    @beer = Beer.find_by(params[:id])
+    redirect_to beers_path if !@beer
   end
 end

@@ -13,7 +13,6 @@ class SessionsController < ApplicationController
 
   def create
     if params [:provider] == 'google_oauth2'
-      byebug
       @user = User.create_by_google_omniauth(auth)
       session[:user_id] = @user.id
       redirect_to user_path(@user)
