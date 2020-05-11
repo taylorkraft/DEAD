@@ -15,15 +15,6 @@ class SessionsController < ApplicationController
   def create
     if params[:provider] == 'google_oauth2'
       @user = User.create_by_google_omniauth(auth)
-<<<<<<< HEAD
-      session[:user_id] = @user.id
-      redirect_to user_path(@user)
-    
-    @user = User.find_by(username: params[:user][:username]) #try to find user in the system
-    # if @user && @user.authenticate(params[:user][:password]) 
-    if @user.try(:authenticate, params[:user][:password]) #did we find a user and did they enter a valid password?
-=======
->>>>>>> updated_master
       session[:user_id] = @user.id
       redirect_to user_path(@user)
     else
@@ -38,9 +29,6 @@ class SessionsController < ApplicationController
       end
     end
   end
-<<<<<<< HEAD
-end
-=======
 
   def omniauth
     @user = User.create_by_google_omniauth(auth)
@@ -54,5 +42,4 @@ end
     def auth
       request.env['omniauth.auth']
     end
->>>>>>> updated_master
 end
