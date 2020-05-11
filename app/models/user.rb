@@ -5,7 +5,8 @@ class User < ApplicationRecord
   has_many :beers #that they have created
   
   validates :username, presence: true, uniqueness: true
-
+  validates :email, presence: true
+  
   has_secure_password #gives us authenticate method, validates password
 
   def self.create_by_google_omniauth(auth)
