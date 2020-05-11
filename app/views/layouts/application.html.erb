@@ -9,12 +9,17 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-
-  <div>
-  <!-- add if statmement and links for sign up/login -->
-    <%= link_to "Log Out", logout_path, method: :delete %><br>
-    <%= link_to "Add A Beer", new_beer_path %>
-  </div>
+  <% if logged_in? %>
+    <div>
+      <%= link_to "Home", user_path(current_user) %><br>
+      <%= link_to "Add A Beer", new_beer_path %><br>
+      <%= link_to "Rate A Beer", new_rating_path %><br>
+      <%= link_to "All Beers", beers_path %><br>
+      <%= link_to "All Ratings", ratings_path %><br>
+      <%= link_to "Log Out", logout_path, method: :delete %>
+    </div>
+  <% end %>
+    
 
 
   <body>
