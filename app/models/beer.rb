@@ -4,6 +4,7 @@ class Beer < ApplicationRecord
   has_many :ratings
   has_many :users, through: :ratings #people who have rated beers
   # accepts_nested_attributes_for :brewery
+  has_one_attached :image
 
   validates :name, presence: true
   validate :not_a_duplicate
