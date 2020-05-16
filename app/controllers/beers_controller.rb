@@ -30,17 +30,22 @@ class BeersController < ApplicationController
   end
 
   def edit
-    
   end
 
   def update
+    if @beer.update(beer_params)
+      @beer.save
+      redirect_to @beer
+    else
+      render :new
+    end
   end
 
 
   private
 
   def beer_params
-    params.require(:beer).permit(:name, :style, :ABV, :brewery_id, brewery_attributes: [:name])
+    params.require(:beer).permit(:name, :style, :ABV, :brewery_id, :user_id, brewery_attributes: [:name])
   end
 
   def set_beer

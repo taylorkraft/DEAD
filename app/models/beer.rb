@@ -6,8 +6,8 @@ class Beer < ApplicationRecord
   # accepts_nested_attributes_for :brewery
   has_one_attached :image
 
-  validates :name, presence: true
-  validate :not_a_duplicate
+  validates :name, presence: true, uniqueness: true
+  #validate :not_a_duplicate
 
   scope :order_by_rating, -> {left_joins(:ratings).group(:id).order('avg(stars) desc')} #scope methods apply to whole class/collection
   
@@ -20,11 +20,11 @@ class Beer < ApplicationRecord
     self.brewery
   end
   
-  def not_a_duplicate
-    if Beer.find_by(name: name, brewery_id: brewery_id)
-      errors.add(:style, 'has already been added by that brewery')
-    end
-  end
+  # def not_a_duplicate
+  #   if Beer.find_by(name: name, brewery_id: brewery_id)
+  #     errors.add(:name, 'has already been added by that brewery')
+  #   end
+  # end
 
   def beer_and_brewery
     "#{brewery.name} - #{name}"
