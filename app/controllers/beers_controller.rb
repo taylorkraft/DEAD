@@ -30,6 +30,7 @@ class BeersController < ApplicationController
   end
 
   def edit
+    
   end
 
   def update
@@ -43,7 +44,7 @@ class BeersController < ApplicationController
   end
 
   def set_beer
-    @beer = Beer.find_by(params[:id])
+    @beer = Beer.find_by_id(params[:id])
     redirect_to beers_path if !@beer
   end
 end
