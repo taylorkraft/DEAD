@@ -1,7 +1,12 @@
 <h1>Beers By Rating</h1>
+<%= form_tag beers_path, method: :get do %>
+<%= label_tag(:search, "Search for Beers here:")%>
+<%= text_field_tag(:name, params[:name]) %>
+<%= submit_tag("Search", :name => nil) %>
+<% end %>
   <ol>
 <% @beers.each do |beer| %>
-    <li><h3><%= beer.brewery.name %> <%= beer.name %></h3>
+    <li><h3><%= beer.brewery.name %> <%= beer.name %> Added by: <%= beer.user.username %> </h3>
   <div>
     <p><%= beer.style %> - <%= beer.ABV %></p>
   </div>

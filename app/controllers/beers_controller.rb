@@ -1,5 +1,5 @@
 class BeersController < ApplicationController
-  before_action :set_beer, only:[:show, :edit, :update]
+  before_action :set_beer, only:[:show, :edit, :update] #sets beer before form actions execute
   before_action :redirect_if_not_logged_in
 
   def new
@@ -9,7 +9,7 @@ class BeersController < ApplicationController
 
   def create
     @beer = Beer.new(beer_params)
-    @beer.user_id = session[:user_id]
+    @beer.user_id = session[:user_id] #associates a user to beer
 
     if @beer.save #validates
       @beer.image.purge
@@ -22,12 +22,18 @@ class BeersController < ApplicationController
   end
 
   def index
-    @beers = Beer.order_by_rating.includes(:brewery) #only queries the database once
+    if params[:name]
+      @beers = Beer.where('name LIKE ?', "%#{params[:name]}%")
+    else
+      @beers = Beer.order_by_rating.includes(:brewery)
+    #only queries the database once
+    end
   end
   
   def show
     @beer = Beer.find_by_id(params[:id])
   end
+
 
   def edit
   end

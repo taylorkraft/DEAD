@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   resources :beers do
     resources :ratings, only: [:new, :index]
   end
-  resources :breweries
+  # resources :breweries
   resources :users, only: [:new, :create, :show]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

@@ -3,15 +3,14 @@ class RatingsController < ApplicationController
 
   def new
     if @beer = Beer.find_by_id(params[:beer_id]) #if nested
-      @rating = @beer.ratings.build #allows rating to know about it's beer
+      @rating = @beer.ratings.build
     else
-      @rating = Rating.new
+      @rating = Rating.new 
     end
   end
 
   def create
-    # @rating = Rating.new(rating_params)
-    @rating = current_user.ratings.build(rating_params)
+    @rating = current_user.ratings.build(rating_params) #associates user to their rating
     if @rating.save
       redirect_to rating_path(@rating)
     else
@@ -25,7 +24,7 @@ class RatingsController < ApplicationController
 
   def index
     if @beer = Beer.find_by_id(params[:beer_id]) #checks if it's nested and for valid beer id
-      @ratings = @beer.ratings
+      @ratings = @beer.ratings #all of that beer's ratings
     else
       #if it's not nested
       @ratings = Rating.all

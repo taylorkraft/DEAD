@@ -19,7 +19,6 @@ class SessionsController < ApplicationController
       redirect_to user_path(@user)
     else
       @user = User.find_by(username: params[:user][:username]) #try to find user in the system
-      # if @user && @user.authenticate(params[:user][:password]) 
       if @user && @user.authenticate(params[:user][:password]) #did we find a user and did they enter a valid password?
         session[:user_id] = @user.id
         redirect_to user_path(@user)
@@ -40,6 +39,6 @@ class SessionsController < ApplicationController
   private
 
     def auth
-      request.env['omniauth.auth']
+      request.env['omniauth.auth'] # set a special hash called the auth hash on the rack env of a request
     end
 end
