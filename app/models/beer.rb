@@ -10,6 +10,8 @@ class Beer < ApplicationRecord
   scope :order_by_rating, -> {left_joins(:ratings).group(:id).order('avg(stars) desc')} 
   #scope methods apply to whole class/collection
   #groups rating by id and orders by rating
+
+  scope :input, -> (name) {where("name LIKE ?", "%#{name}%")}
   
   def self.alpha
     order(:name)

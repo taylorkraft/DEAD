@@ -23,7 +23,11 @@ class BeersController < ApplicationController
 
   def index
     if params[:name]
-      @beers = Beer.where('name LIKE ?', "%#{params[:name]}%") 
+      @beers = Beer.input(params[:name])
+      #sql query
+      #params we're passing in as ?
+      #sql LIKE compares params user input for name
+      #double % - name can appear anywhere in the data that is being searched
     else
       @beers = Beer.order_by_rating.includes(:brewery)
     #only queries the database once
