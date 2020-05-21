@@ -6,7 +6,9 @@
 <% end %>
   <ol>
 <% @beers.each do |beer| %>
-    <li><h3><%= beer.brewery.name %> <%= beer.name %> Added by: <%= beer.user.username %> </h3>
+    <li><h3><%= beer.brewery.name %> <%= beer.name %>
+    <br>
+    Added by: <%= beer.user.username %> </h3>
   <div>
     <p><%= beer.style %> - <%= beer.ABV %></p>
   </div>

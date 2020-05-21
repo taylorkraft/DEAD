@@ -20,7 +20,7 @@
   <%= f.hidden_field :user_id, :value => current_user.id %>
   <p> Select An Existing Brewery: </p>
   <div>
-    <%= f.collection_select :brewery_id, Brewery.alpha, :id, :name, include_blank: 'Select A Brewery' %>
+    <%= f.collection_select :brewery_id, Brewery.all, :id, :name, include_blank: 'Select A Brewery' %>
   </div>
 
   <p> Or Create A New Brewery: </p>

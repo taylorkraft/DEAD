@@ -1,11 +1,12 @@
-<h1><%= @beer.brewery.name %> <%= @beer.name%></h1><br>
-<h3><%= @beer.style %></h3><br>
+<h1><%= @beer.brewery.name %> <%= @beer.name%></h1>
+<h3><%= @beer.style %></h3>
 <h3>ABV:<%= @beer.ABV %></h3><br>
 
 <% if @beer.image.attached? %>
-  <%= image_tag url_for(@beer.image) %>
+  <%= image_tag url_for(@beer.image), style: "width: 15%" %>
 <% end %>
-
+<br>
+<br>
 <%= link_to "Edit #{@beer.name}", edit_beer_path(@beer) if @beer.user == current_user %>
 <br>
 <%= link_to "See Reviews for #{@beer.name}", beer_ratings_path(@beer) %>

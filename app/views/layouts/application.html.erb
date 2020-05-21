@@ -18,6 +18,11 @@
       <%= link_to "All Ratings", ratings_path %><br>
       <%= link_to "Log Out", logout_path, method: :delete %>
     </div>
+  <% else %>
+    <div>
+    <%= link_to "Home", root_path %><br>
+    <%= link_to "SignUp", signup_path %>
+    </div>
   <% end %>
     
 

@@ -23,7 +23,7 @@ class BeersController < ApplicationController
 
   def index
     if params[:name]
-      @beers = Beer.where('name LIKE ?', "%#{params[:name]}%")
+      @beers = Beer.where('name LIKE ?', "%#{params[:name]}%") 
     else
       @beers = Beer.order_by_rating.includes(:brewery)
     #only queries the database once
